@@ -1,0 +1,22 @@
+[
+  {
+    "nombre": "Designed sofa",
+    "precio": 30000,
+    "link": "assets/images/features/f1.jpg",
+    "stock": "3",
+    "etiqueta": "mesa",
+    "descripcion": "Lorem Ipsum",
+    "idCategoria": 122,
+    "idSucursal": 5
+  },
+  {
+    "nombre": "Dinning table",
+    "precio": 30000,
+    "link": "assets/images/features/f2.jpg",
+    "stock": "3",
+    "etiqueta": "mesa",
+    "descripcion": "Lorem Ipsum",
+    "idCategoria": 121,
+    "idSucursal": 5
+  }
+]

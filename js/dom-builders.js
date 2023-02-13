@@ -106,38 +106,46 @@ const getProductListRowsAdmin = (productList) => {
   const productListRows = productList.map((product)=>{
     return `
       <tr class="info-row">
-        <th class="td-info" scope="row">${product.getName()}</th>
+        <th class="td-info" scope="row">${product.getNombre()}</th>
         <td class="td-info">${product.getId()}</td>
-        <td class="td-info">${product.getDescription().substring(product.getDescription().length - 10)}...</td>
-        <td class="td-info">...${product.getImage().substring(product.getImage().length - 10)}</td>
-        <td class="td-info">${product.getCategoryId()}</td>
-        <td class="td-info">${product.getPrice()}</td>
+        <td class="td-info">${product.getPrecio()}</td>
+        <td class="td-info">...${product.getLink().substring(product.getLink().length - 10)}</td>
         <td class="td-info">${product.getStock()}</td>
+        <td class="td-info">${product.getEtiqueta()}</td>
+        <td class="td-info">${product.getDescripcion().substring(product.getDescripcion().length - 10)}...</td>
+        <td class="td-info">${product.getIdCategoria()}</td>
+        <td class="td-info">${product.getIdSucursal()}</td>
         <td class="td-info"> 
           <button class="edit-product-cta">Editar</button> 
           <button uuid="${product.getId()}" class="delete-product-cta" >Eliminar</button> 
         </td>
 
         <th class="td-input hide" scope="row">
-          <input value="${product.getName()}" type="text" class="input-name" placeholder="nombre">
+          <input value="${product.getNombre()}" type="text" class="input-name" placeholder="nombre">
         </th>
 				<td class="td-input hide">
           <input value="${product.getId()}" type="text" class="input-id" placeholder="id">
         </td>
 				<td class="td-input hide">
-          <input value="${product.getDescription()}" type="text" class="input-description" placeholder="descripcion">
+          <input value="${product.getPrecio()}" type="text" class="input-description" placeholder="descripcion">
         </td>
 				<td class="td-input hide">
-          <input value="${product.getImage()}" type="text" class="input-image" placeholder="imagen">
+          <input value="${product.getLink()}" type="text" class="input-image" placeholder="imagen">
         </td>
 				<td class="td-input hide">
-          <input value="${product.getCategoryId()}" type="text" class="input-category-id" placeholder="categoria">
+          <input value="${product.getStock()}" type="text" class="input-category-id" placeholder="categoria">
         </td>
 				<td class="td-input hide">
-          <input value="${product.getPrice()}" type="number" class="input-price" placeholder="precio">
+          <input value="${product.getEtiqueta()}" type="number" class="input-price" placeholder="precio">
         </td>
 				<td class="td-input hide">
-          <input value="${product.getStock()}" type="number" class="input-stock" placeholder="stock">
+          <input value="${product.getDescripcion()}" type="number" class="input-stock" placeholder="stock">
+        </td>
+        <td class="td-input hide">
+          <input value="${product.getIdCategoria()}" type="number" class="input-stock" placeholder="stock">
+        </td>
+        <td class="td-input hide">
+          <input value="${product.getIdSucursal()}" type="number" class="input-stock" placeholder="stock">
         </td>
 				<td class="td-input hide">
           <button class="save-product-cta">guardar</button>

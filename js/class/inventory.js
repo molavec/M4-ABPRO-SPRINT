@@ -15,6 +15,10 @@ class Inventory {
     return this.products;
   }
 
+  updateProducts(products){
+    this.products = products;
+  }
+
   /**
    * Obtain product by id
    * @param {*} productId product id 

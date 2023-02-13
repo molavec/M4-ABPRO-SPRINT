@@ -118,27 +118,35 @@
 					<input id="inputName" placeholder="Agrega el nombre de tu producto" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 				</div>
 				<div class="mb-3">
-					<h6>Codigo</h6>
-					<input id="inputCode" placeholder="Agrega el codigo de tu producto"  type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+					<h6>Id</h6>
+					<input id="inputId" placeholder="Agrega el codigo de tu producto"  type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 				</div>
 				<div class="mb-3">	
-					<h6>Descripcion</h6>
+					<h6>Precio</h6>
 					<input id="inputDescription" placeholder="Agrega la descripcion de tu producto" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 				</div>
 				<div class="mb-3">
-					<h6>Imagen</h6>
+					<h6>Link</h6>
 					<input id="inputImg" placeholder="Agrega el link de tu imagen" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 				</div>
 				<div class="mb-3">
-					<h6>Categoria Id</h6>
+					<h6>Stock</h6>
 					<input id="inputCategoryId" placeholder="Agrega la Categoria Id de tu producto" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 				</div>		
 				<div class="mb-3">
-					<h6>Precio</h6>
+					<h6>Etiqueta</h6>
 					<input id="inputPrice" placeholder="Agrega el precio de tu producto" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 				</div>	
 				<div class="mb-3">
-					<h6>Stock</h6>
+					<h6>Descripcion</h6>
+					<input id="inputStock" placeholder="Agrega el stock de tu producto" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+				</div>	
+				<div class="mb-3">
+					<h6>Id Categoria</h6>
+					<input id="inputStock" placeholder="Agrega el stock de tu producto" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+				</div>	
+				<div class="mb-3">
+					<h6>Id Sucursal</h6>
 					<input id="inputStock" placeholder="Agrega el stock de tu producto" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 				</div>	
 				<button id="save-new-product" class="btn btn-primary">Enviar</button>
@@ -160,12 +168,14 @@
 						<tr>
 							<th scope="col">Producto</th>
 							<th scope="col">Id</th>
-							<th scope="col">Descripción</th>
-							<th scope="col">Imagen</th>
-							<th scope="col">Categoría</th>
 							<th scope="col">Precio</th>
-							<th scope="col">Cantidad</th>
-							<th scope="col">Función</th>
+							<th scope="col">Link</th>
+							<th scope="col">Stock</th>
+							<th scope="col">Etiqueta</th>
+							<th scope="col">Descripcion</th>
+							<th scope="col">Id Categoria</th>
+							<th scope="col">Id Sucursal</th>
+							<th scope="col">Acciones</th>
 						</tr>
 					</thead>
 					<tbody id="product-rows">

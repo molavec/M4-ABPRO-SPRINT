@@ -27,6 +27,35 @@ class ConnectionManager {
     return value;
   }
 
+  async getProducts() {
+    
+    const requestOptions = {
+      method: 'GET',
+      redirect: 'follow'
+    };
+    
+    const value = await fetch(this.API_URL + "td-producto", requestOptions)
+    .then(response => response.text())
+    .then(result => {
+      const resultObj = JSON.parse(result);
+      console.log('result', result);
+      return resultObj;
+    })
+    .catch(error => console.log('error', error));
+
+    return value;
+  }
+
+  async getProductsCurrentSucursal() {
+    const allProducts = await this.getProducts();
+    const filteredProducts = allProducts.filter((p)=> (p.idSucursal == this.CURRENT_SUCURSAL));
+    return filteredProducts;
+  }
+
+
+
+  
+
 }
 
 export default ConnectionManager;

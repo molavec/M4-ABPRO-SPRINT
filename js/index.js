@@ -9,6 +9,10 @@ import Cart from "./class/cart.js";
 import Inventory from "./class/inventory.js";
 import Category from "./class/category.js";
 
+
+const cm = new ConnectionManager();
+
+
 /**
  * Actualiza los totales en el carro
  */
@@ -22,10 +26,43 @@ const updateTotals = () => {
 }
 
 const updateSucursalName = async () => {
-	const cm = new ConnectionManager();
 	const currentSucursal = await cm.getCurrentSucursal();
-	$('#sucursal-name').html(currentSucursal.nombre)
+	$('#sucursal-name').html(currentSucursal.nombre);
 }
+
+// Crea el objeto inventory.
+let products = [];
+const inventory = new Inventory(products);
+
+const updateSucursalProducts = async () => {
+	const productsFromAPI = await cm.getProductsCurrentSucursal();
+	console.log(products);
+	// $('#sucursal-name').html(products);
+
+	products = productsFromAPI.map((product) => {
+		return new Product(
+			product.id, 
+			product.nombre, 
+			product.precio, 
+			product.link, 
+			product.stock,         
+			product.etiqueta, 
+			product.descripcion,
+			product.idCategoria, 
+			product.idSucursal, 
+		);
+	});
+
+	// actualizo listado de productos
+	inventory.updateProducts(products);
+
+	updateProductRowsInTable();
+
+
+}
+
+
+
 const updateProductRowsInTable = () => {
 	
 	// --> ADMIN: AÑADIR PRODUCTOS DINÁMINCAMENTE EN LA TABLA
@@ -77,19 +114,8 @@ const updateProductRowsInTable = () => {
 
 }
 
-// crea un arreglo de productos a partir de la 'base de datos' catalog.js
-export const products = catalog.map((product) => {
-	return new Product(
-		product.code,
-		product.name,
-		product.price,
-		product.image,
-		product.description,
-		product.stock,
-		product.categoryId,
-	);
-}
-);
+// crea un arreglo de productos a partir de la 'base de datos' del API
+updateSucursalProducts();
 
 const categories = categoriesExamples.map((category) => {
 	return new Category(category.id, category.name)
@@ -99,8 +125,7 @@ const categories = categoriesExamples.map((category) => {
 // Crea el objeto carro.
 const cart = new Cart();
 
-// Crea el objeto inventory.
-const inventory = new Inventory(products);
+
 
 
 // --> MANEJO DEL DOM
