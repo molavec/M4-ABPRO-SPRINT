@@ -62,7 +62,7 @@
 								</ul>
 							</div>
 						</div>
-
+						
 						<div class="col-3 col-md-2 p-2">
 							<div class="row">
 								<!--carrito imagen-->
@@ -89,7 +89,6 @@
 								</div>
 							</div>
 						</div>
-						
 						<!-- <div class="col">
 							<form class="d-flex" role="search">
 								<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -103,127 +102,80 @@
 
 		</header>
 
-		<section id="home">
+		<!-- Seccion para crear producto -->
+		<section id="new-product-container" class="container">
 			
-			<div class="position-relative overflow-hidden text-left bg-light">
-				<div class="p-lg-5 mx-auto my-5">
-					<h1 class="display-4 fw-normal">Tecno Chile</h1>
-					<p class="lead fw-normal">Productos tecnológicos.</p>
-					<a class="btn-cart welcome-add-cart sofa-collection-btn text-center" href="#products">Ver Productos</a>
+			<div class="d-flex flex-row-reverse">
+				<div class="p-2">
+					<button id="new-product-cta" class="btn btn-primary">Agregar producto</button>
 				</div>
-				<div class="product-device shadow-sm d-none d-md-block"></div>
-				<div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
 			</div>
+	
+			<div id="add-product-admin-box" class="hide">
+
+				<div class="mb-3">
+					<h6>Nombre</h6>
+					<input id="inputName" placeholder="Agrega el nombre de tu producto" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+				</div>
+				<div class="mb-3">
+					<h6>Codigo</h6>
+					<input id="inputCode" placeholder="Agrega el codigo de tu producto"  type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+				</div>
+				<div class="mb-3">	
+					<h6>Descripcion</h6>
+					<input id="inputDescription" placeholder="Agrega la descripcion de tu producto" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+				</div>
+				<div class="mb-3">
+					<h6>Imagen</h6>
+					<input id="inputImg" placeholder="Agrega el link de tu imagen" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+				</div>
+				<div class="mb-3">
+					<h6>Categoria Id</h6>
+					<input id="inputCategoryId" placeholder="Agrega la Categoria Id de tu producto" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+				</div>		
+				<div class="mb-3">
+					<h6>Precio</h6>
+					<input id="inputPrice" placeholder="Agrega el precio de tu producto" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+				</div>	
+				<div class="mb-3">
+					<h6>Stock</h6>
+					<input id="inputStock" placeholder="Agrega el stock de tu producto" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+				</div>	
+				<button id="save-new-product" class="btn btn-primary">Enviar</button>
+
+			</div>		
+				
+		</section>
+			
+		<!-- Seccion con tabla de lista productos -->
+		<section id="inventory" class="container">
+		    
+			<div >
+				<h1>Lista de productos</h1>
+			</div>
+			
+			<div style="overflow-x: auto;">
+				<table class="table">
+					<thead>
+						<tr>
+							<th scope="col">Producto</th>
+							<th scope="col">Id</th>
+							<th scope="col">Descripción</th>
+							<th scope="col">Imagen</th>
+							<th scope="col">Categoría</th>
+							<th scope="col">Precio</th>
+							<th scope="col">Cantidad</th>
+							<th scope="col">Función</th>
+						</tr>
+					</thead>
+					<tbody id="product-rows">
+						<!-- Product rows goes here -->
+					</tbody>
+				</table>
+			</div>
+			
 		</section>
 
-		<!--products start -->
-		<section id="products" class="feature">
-			<div class="container">
-
-				<div class="section-header">
-					<h2>Nuestros Productos</h2>
-				</div><!--/.section-header-->
-
-				<div class="search-box container my-4">
-					<div class="row">
-						<!-- filtro por texto -->
-						<div class="filter-text-box col-3">
-							Buscar:
-							<input type="text" placeholder="Ingresa texto" id="searchTextProductInput">
-							<button id="searchTextProductButton" >buscar</button>
-						</div>
-	
-						<!-- filtro por categotia -->
-						<div class="filter-category-box col-3">
-							Categorias:
-							<select name="" id="filter-product-category" value="null">
-								<!-- llenar dinamicamente las opciones desde js -->
-								<option value="" selected disabled hidden>Choose here</option>
-								<!-- <option value="null" >Selecciona una categorias</option> -->
-								<option value=1>mesas</option>
-								<option value=2>sillas</option>
-								<!-- +56946608243 nico opazos -->
-							</select>
-						</div>
-	
-						<!-- filtro por rango de precios -->
-						<div class="filter-rango-category-box col-6">
-							<div class="row container">
-								<div class="col">
-									<label>Rango de Precio</label>
-								</div>
-								<div class="col">
-									<input class="form-control" type="number" name="cantidad" id="intMinimo" min="1" max="1000" placeholder="mínimo">
-								</div>
-								<div class="col">
-									<input class="form-control" type="number" name="cantidad" id="intMaximo" min="1" max="1000000" placeholder="máximo">
-								</div>
-								<div class="col">
-									<button type="button"  class="btn btn-primary" id="btnRango">Buscar</button>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<br>
-
-				<!-- Lista de productos -->
-				<div class="feature-content">
-					<div class="row">
-						<!-- PRODUCTS GOES HERE -->
-					</div>
-				</div>
-
-			</div><!--/.container-->
-
-		</section>
-		<!--products end -->
-
-		<!-- offcanva cart start -->
-		<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasCart" aria-labelledby="offcanvasCartLabel">
-
-			<div class="offcanvas-header">
-				<h5 class="offcanvas-title" id="offcanvasCartLabel">Tus Productos</h5>
-				<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-			</div>
-
-			<div class="offcanvas-body">				
-		
-				<!-- totalizador -->
-				<div id="totalizador" class="container" id="listaproductos">
-					<div class="cart-alert"></div>
-					<ul class="item-list">
-						<!-- items in cart here -->
-						<p>El carro está vacío.</p>
-					</ul>
-		
-					<hr>
-					
-					<div class="cart-alert"></div>
-
-					<div class="totales">
-						<p class="neto">Total Neto: <span id="total-neto">$ 0</span></p>
-						<p>IVA: <span id="iva">$ 0</span> </p>
-						<p>Total: <span id="total">$ 0</span> </p>
-						<p>Despacho: <span id="shipping">$ 0</span> </p>
-						<p>Total con despacho: <span id="total-with-shipping">$ 0</span>
-						</p>
-					</div>
-
-					<div class="container mt-3">
-						<button id="buy-cart" type="button" class="btn btn-primary">
-							Comprar
-						</button>
-						<button id="clean-cart" type="button" class="btn btn-secondary">
-							Limpiar Carro
-						</button>
-					</div>
-		
-				</div>
-			</div>
-		</div>
-		<!-- offcanva cart end -->
 
 		<!--footer start-->
 		<footer id="footer"  class="footer">
@@ -268,6 +220,7 @@
         
 		<!--Custom JS-->
 		<script type="module" src="js/index.js"></script>
+
         
     </body>
 	
