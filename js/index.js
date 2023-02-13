@@ -9,13 +9,6 @@ import Cart from "./class/cart.js";
 import Inventory from "./class/inventory.js";
 import Category from "./class/category.js";
 
-
-
-const cm = new ConnectionManager();
-
-cm.getCurrentSucursal();
-
-
 /**
  * Actualiza los totales en el carro
  */
@@ -28,7 +21,12 @@ const updateTotals = () => {
 	$("#total-with-shipping").html(`$ ${cart.getTotal() + cart.getTax() + cart.getShippingCost()}`);
 }
 
-const updateProductRowsInTable = function() {
+const updateSucursalName = async () => {
+	const cm = new ConnectionManager();
+	const currentSucursal = await cm.getCurrentSucursal();
+	$('#sucursal-name').html(currentSucursal.nombre)
+}
+const updateProductRowsInTable = () => {
 	
 	// --> ADMIN: AÑADIR PRODUCTOS DINÁMINCAMENTE EN LA TABLA
 	$('#product-rows').html(getProductListRowsAdmin(inventory.getProducts()));
@@ -113,6 +111,8 @@ $(document).ready(function () {
 	 * Llenado dinámico de datos
 	 ===============================*/
 
+	// Obtengo el valor de la sucursal
+	updateSucursalName();
 
 	// --> ADMIN: AÑADIR PRODUCTOS DINÁMINCAMENTE EN LA TABLA
 	updateProductRowsInTable();

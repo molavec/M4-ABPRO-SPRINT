@@ -19,10 +19,12 @@ class ConnectionManager {
     .then(result => {
       const sucursales = JSON.parse(result);
       const currentSucursal = sucursales.find((sucursal => (sucursal.id == this.CURRENT_SUCURSAL)))
-      // const currentSucursal = result;
-      console.log('currentSucursal', currentSucursal)
+      // console.log('currentSucursal', currentSucursal);
+      return currentSucursal;
     })
     .catch(error => console.log('error', error));
+
+    return value;
   }
 
 }
