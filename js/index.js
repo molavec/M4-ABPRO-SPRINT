@@ -2,10 +2,18 @@ import catalog from "./data/catalog.js";
 import categoriesExamples from "./data/categories.js";
 import { getProductListHome, getProductListCart, getProductListRowsAdmin } from "./dom-builders.js";
 
+import ConnectionManager from "./class/ConnectionManger.js";
+
 import Product from "./class/product.js";
 import Cart from "./class/cart.js";
 import Inventory from "./class/inventory.js";
 import Category from "./class/category.js";
+
+
+
+const cm = new ConnectionManager();
+
+cm.getCurrentSucursal();
 
 
 /**
