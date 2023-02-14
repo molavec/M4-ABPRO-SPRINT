@@ -38,7 +38,7 @@ class ConnectionManager {
     .then(response => response.text())
     .then(result => {
       const resultObj = JSON.parse(result);
-      console.log('result', result);
+      // console.log('result', result);
       return resultObj;
     })
     .catch(error => console.log('error', error));
@@ -51,6 +51,40 @@ class ConnectionManager {
     const filteredProducts = allProducts.filter((p)=> (p.idSucursal == this.CURRENT_SUCURSAL));
     return filteredProducts;
   }
+
+  async addProduct(product) {
+    const productObj = { 
+      nombre: product.getNombre(), 
+      precio: parseInt(product.getPrecio()), 
+      link: product.getLink(), 
+      stock: product.getStock(),         
+      etiqueta: product.getEtiqueta(), 
+      descripcion: product.getDescripcion(),
+      idCategoria: product.getIdCategoria(), 
+      idSucursal: product.getIdSucursal(), 
+    }
+
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    var raw = JSON.stringify(productObj);
+
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow'
+    };
+
+    return fetch("https://bsite.net/metalflap/td-producto", requestOptions)
+      .then(response => response.text())
+      .then(result => {
+        console.log(result);
+        return
+      })
+      .catch(error => console.log('error', error));
+  }
+
 
 
 

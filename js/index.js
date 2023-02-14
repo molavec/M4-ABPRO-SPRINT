@@ -66,6 +66,7 @@ const updateSucursalProducts = async () => {
 const updateProductRowsInTable = () => {
 	
 	// --> ADMIN: AÑADIR PRODUCTOS DINÁMINCAMENTE EN LA TABLA
+	console.log('inventory.getProducts()', inventory.getProducts());
 	$('#product-rows').html(getProductListRowsAdmin(inventory.getProducts()));
 	
 	// -> ADMIN: Eliminar productos de la lista
@@ -152,32 +153,44 @@ $(document).ready(function () {
 	});
 
 	// -> CLICK ADD NEW PRODUCT
-	$("#save-new-product").click(function () {
+	$("#save-new-product").click(async function () {
 
 		// obtiendo valores del input
-		let inputImg = $("#inputImg")
-		let inputName = $("#inputName")
-		let inputCode = $("#inputCode")
-		let inputDescription = $("#inputDescription")
-		let inputPrice = $("#inputPrice")
-		let inputStock = $("#inputStock")
-		let inputCategoryId = $("#inputCategoryId")
+		let inputId = $("#inputId").val();
+		let inputNombre = $("#inputNombre").val();
+		let inputPrecio = $("#inputPrecio").val();
+		let inputLink = $("#inputLink").val();
+		let inputStock = $("#inputStock").val();
+		let inputEtiqueta = $("#inputEtiqueta").val();
+		let inputDescripcion = $("#inputDescripcion").val();
+		let inputIdCategoria = $("#inputIdCategoria").val();
+		let inputIdSucursal = $("#inputIdSucursal").val();
 
 		// se crea el objeto producto
 		const newProduct = new Product(
-			inputCode.val(),
-			inputName.val(),
-			inputPrice.val(),
-			inputImg.val(),
-			inputDescription.val(),
-			inputStock.val(),
-			inputCategoryId.val(),
+			inputId,
+			inputNombre,
+			inputPrecio,
+			inputLink,
+			inputStock,
+			inputEtiqueta,
+			inputDescripcion,
+			inputIdCategoria,
+			inputIdSucursal,
 		);
 
-		// Agrega producto a inventario
-		inventory.addProduct(newProduct);
-		console.log('inventaRIO updatedd', inventory.getProducts())
+		
+		// crea un producto en la bbdd
+		await cm.addProduct(newProduct);
 
+		// Agrega producto a inventario
+		// inventory.addProduct(newProduct);
+		products = await cm.getProductsCurrentSucursal();
+
+		await updateSucursalProducts()
+		// console.log('products AQUI', products)
+		// inventory.updateProducts(products);
+		
 		// repintar filas en tabla inventario
 		// --> ADMIN: AÑADIR PRODUCTOS DINÁMINCAMENTE EN LA TABLA
 		updateProductRowsInTable();
